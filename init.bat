@@ -1,7 +1,7 @@
 @echo off
 :: Mostrar mensaje de inicio
 echo -------------------------------------------------
-echo Iniciando la instalación del proyecto Ingeso...
+echo Iniciando la instalacion del proyecto Tutores...
 echo -------------------------------------------------
 
 :: Cambiar al directorio del frontend
