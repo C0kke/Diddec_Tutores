@@ -29,12 +29,16 @@ cd BackIngeso\server
 echo Instalando dependencias del Backend...
 npm install
 
+:: Limpiar e instalar dependencias según package-lock.json
+echo Verificando dependencias (npm ci)...
+npm ci
+
 :: Regresar al directorio raíz
 cd..\..
 
 :: Mostrar mensaje de finalización
 echo -------------------------------------------------
 echo El programa ha sido instalado correctamente.
-echo Ahora puedes ejecutar el sistema utilizando start.bat
+echo Ahora puedes ejecutar el sistema 
 echo -------------------------------------------------
 pause
