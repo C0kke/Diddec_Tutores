@@ -8,7 +8,16 @@ Instalar Docker desktop y node
 Configurar ips docker-compose y .envs en back y front
 
 ## Paso 3
-Ejecutar init.bat para los servicios y docker
+Ejecutar en terminal:
+- cd FrontIngeso\cliente
+- npm install
+- npm ci
+- npx next build
+- cd..\..
+- cd BackIngeso\server
+- npm install
+- npm ci
+- cd..\..
 
 ## Paso 4
 Inicializar frontend, backend y base de datos start.bat
