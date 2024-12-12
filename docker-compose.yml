@@ -1,0 +1,47 @@
+services:
+  backend:
+    build:
+      context: ./BackIngeso/server
+    container_name: ingeso-backend
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./BackIngeso/server/.env
+    depends_on:
+      - mysql
+    networks:
+      - ingeso-network
+    command: sh -c "until nc -z mysql 3306; do echo 'Waiting for MySQL...'; sleep 2; done; npm run start"
+
+  frontend:
+    build:
+      context: ./FrontIngeso/cliente
+    container_name: ingeso-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://192.168.194.160:3001
+      - NEXT_TELEMETRY_DISABLED=1
+    networks:
+      - ingeso-network
+
+  mysql:
+    image: mysql:8
+    container_name: ingeso-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_ingeso
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - ingeso-network
+
+networks:
+  ingeso-network:
+    name: ingeso-network
+    driver: bridge
+
+volumes:
+  mysql-data:
